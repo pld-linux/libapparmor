@@ -1,6 +1,7 @@
 %define		_ver 2.0
 %define		_svnrel 6288
 Summary:	Library to provide key AppArmor symbols
+Summary(pl):	Biblioteka udostêpniaj±ca kluczowe symbole AppArmor
 Name:		libapparmor
 Version:	%{_ver}.%{_svnrel}
 Release:	0.8
@@ -17,6 +18,13 @@ change_hat(2) symbol, used for sub-process confinement by AppArmor.
 Applications that wish to make use of change_hat(2) need to link
 against this library. This package is part of a suite of tools that
 used to be named SubDomain.
+
+%description -l pl
+Ten pakiet udostêpnia bibliotekê libapparmor, zawieraj±c± symbol
+change_hat(2), u¿ywany do wiêzienia podprocesów przez AppArmor.
+Aplikacje chc±ce u¿ywaæ change_hat(2) musz± byæ linkowane z t±
+bibliotek±. Ten pakiet jest czê¶ci± zestawu narzêdzi nazywanego
+SubDomain.
 
 %package devel
 Summary:	Header files for libapparmor library

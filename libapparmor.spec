@@ -1,7 +1,7 @@
 %define		_ver 2.0
 %define		_svnrel 132
 Summary:	Library to provide key AppArmor symbols
-Summary(pl):	Biblioteka udostêpniaj±ca kluczowe symbole AppArmor
+Summary(pl.UTF-8):   Biblioteka udostÄ™pniajÄ…ca kluczowe symbole AppArmor
 Name:		libapparmor
 Version:	%{_ver}.%{_svnrel}
 Release:	0.8
@@ -19,16 +19,16 @@ Applications that wish to make use of change_hat(2) need to link
 against this library. This package is part of a suite of tools that
 used to be named SubDomain.
 
-%description -l pl
-Ten pakiet udostêpnia bibliotekê libapparmor, zawieraj±c± symbol
-change_hat(2), u¿ywany do wiêzienia podprocesów przez AppArmor.
-Aplikacje chc±ce u¿ywaæ change_hat(2) musz± byæ linkowane z t±
-bibliotek±. Ten pakiet jest czê¶ci± zestawu narzêdzi nazywanego
+%description -l pl.UTF-8
+Ten pakiet udostÄ™pnia bibliotekÄ™ libapparmor, zawierajÄ…cÄ… symbol
+change_hat(2), uÅ¼ywany do wiÄ™zienia podprocesÃ³w przez AppArmor.
+Aplikacje chcÄ…ce uÅ¼ywaÄ‡ change_hat(2) muszÄ… byÄ‡ linkowane z tÄ…
+bibliotekÄ…. Ten pakiet jest czÄ™Å›ciÄ… zestawu narzÄ™dzi nazywanego
 SubDomain.
 
 %package devel
 Summary:	Header files for libapparmor library
-Summary(pl):	Pliki nag³ówkowe biblioteki libapparmor
+Summary(pl.UTF-8):   Pliki nagÅ‚Ã³wkowe biblioteki libapparmor
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
@@ -36,19 +36,19 @@ Requires:	%{name} = %{version}-%{release}
 This is the package containing the header files for libapparmor
 library.
 
-%description devel -l pl
-Ten pakiet zawiera pliki nag³ówkowe biblioteki libapparmor.
+%description devel -l pl.UTF-8
+Ten pakiet zawiera pliki nagÅ‚Ã³wkowe biblioteki libapparmor.
 
 %package static
 Summary:	Static libapparmor library
-Summary(pl):	Statyczna biblioteka libapparmor
+Summary(pl.UTF-8):   Statyczna biblioteka libapparmor
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 Static libapparmor library.
 
-%description static -l pl
+%description static -l pl.UTF-8
 Statyczna biblioteka libapparmor.
 
 %prep

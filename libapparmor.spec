@@ -1,7 +1,7 @@
 %define		_ver 2.0
 %define		_svnrel 132
 Summary:	Library to provide key AppArmor symbols
-Summary(pl.UTF-8):   Biblioteka udostępniająca kluczowe symbole AppArmor
+Summary(pl.UTF-8):	Biblioteka udostępniająca kluczowe symbole AppArmor
 Name:		libapparmor
 Version:	%{_ver}.%{_svnrel}
 Release:	0.8
@@ -28,7 +28,7 @@ SubDomain.
 
 %package devel
 Summary:	Header files for libapparmor library
-Summary(pl.UTF-8):   Pliki nagłówkowe biblioteki libapparmor
+Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki libapparmor
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
@@ -41,7 +41,7 @@ Ten pakiet zawiera pliki nagłówkowe biblioteki libapparmor.
 
 %package static
 Summary:	Static libapparmor library
-Summary(pl.UTF-8):   Statyczna biblioteka libapparmor
+Summary(pl.UTF-8):	Statyczna biblioteka libapparmor
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 

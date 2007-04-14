@@ -1,14 +1,15 @@
-%define		_ver 2.0
-%define		_svnrel 132
+%define		_ver 2.0.1
+%define		_svnrel 305
 Summary:	Library to provide key AppArmor symbols
 Summary(pl.UTF-8):	Biblioteka udostępniająca kluczowe symbole AppArmor
 Name:		libapparmor
 Version:	%{_ver}.%{_svnrel}
 Release:	0.8
+Epoch:		1
 License:	LGPL
 Group:		Libraries
-Source0:	http://forgeftp.novell.com/apparmor/Development%20-%20September%20snapshot/%{name}-%{_ver}-%{_svnrel}.tar.gz
-# Source0-md5:	2253abf77f478fc1d02ad8e870bf7228
+Source0:	http://forgeftp.novell.com/apparmor/Development%20-%20March%2007%20-%20SnapShot/%{name}-%{_ver}-%{_svnrel}.tar.gz
+# Source0-md5:	06e025074c8cf0a2d10057d5f057e152
 URL:		http://forge.novell.com/modules/xfmod/project/?apparmor
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 

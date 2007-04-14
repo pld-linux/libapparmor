@@ -31,7 +31,7 @@ SubDomain.
 Summary:	Header files for libapparmor library
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki libapparmor
 Group:		Development/Libraries
-Requires:	%{name} = %{version}-%{release}
+Requires:	%{name} = %{epoch}:%{version}-%{release}
 
 %description devel
 This is the package containing the header files for libapparmor
@@ -44,7 +44,7 @@ Ten pakiet zawiera pliki nagłówkowe biblioteki libapparmor.
 Summary:	Static libapparmor library
 Summary(pl.UTF-8):	Statyczna biblioteka libapparmor
 Group:		Development/Libraries
-Requires:	%{name}-devel = %{version}-%{release}
+Requires:	%{name}-devel = %{epoch}:%{version}-%{release}
 
 %description static
 Static libapparmor library.

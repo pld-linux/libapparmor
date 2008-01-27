@@ -4,7 +4,7 @@ Summary:	Library to provide key AppArmor symbols
 Summary(pl.UTF-8):	Biblioteka udostępniająca kluczowe symbole AppArmor
 Name:		libapparmor
 Version:	%{_ver}.%{_svnrel}
-Release:	0.8
+Release:	1
 Epoch:		1
 License:	LGPL
 Group:		Libraries

@@ -1,5 +1,5 @@
-%define		_ver 2.0.1
-%define		_svnrel 305
+%define		_ver 2.2
+%define		_svnrel 1001
 Summary:	Library to provide key AppArmor symbols
 Summary(pl.UTF-8):	Biblioteka udostępniająca kluczowe symbole AppArmor
 Name:		libapparmor
@@ -8,9 +8,12 @@ Release:	1
 Epoch:		1
 License:	LGPL
 Group:		Libraries
-Source0:	http://forgeftp.novell.com/apparmor/Development%20-%20March%2007%20-%20SnapShot/%{name}-%{_ver}-%{_svnrel}.tar.gz
-# Source0-md5:	06e025074c8cf0a2d10057d5f057e152
+Source0:	http://forge.novell.com/modules/xfcontent/private.php/apparmor/AppArmor-2.1.2/%{name}-%{_ver}-%{_svnrel}.tar.gz
+# Source0-md5:	89f89fe2de2ddb02903172ac279b3e1d
 URL:		http://forge.novell.com/modules/xfmod/project/?apparmor
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -53,20 +56,23 @@ Static libapparmor library.
 Statyczna biblioteka libapparmor.
 
 %prep
-%setup -q -n %{name}-%{_ver}
+%setup -q -n %{name}-%{_ver}-%{_svnrel}
 
 %build
+%{__libtoolize}
+%{__aclocal}
+%{__autoconf}
+%{__automake}
+%configure
 %{__make} \
 	CC="%{__cc}" \
 	CFLAGS="%{rpmcflags}"
 
 %install
 rm -rf $RPM_BUILD_ROOT
+
 %{__make} install \
-	DESTDIR=$RPM_BUILD_ROOT \
-	LIB=%{_lib} \
-	VERSION=%{version} \
-	RELEASE=%{release}
+	DESTDIR=$RPM_BUILD_ROOT
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -76,12 +82,15 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%attr(755,root,root) /%{_lib}/lib*.so.*
+%attr(755,root,root) %{_libdir}/lib*.so.*
 
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/lib*.so
+%{_libdir}/lib*.la
+%{_includedir}/aalogparse
 %{_includedir}/sys/*.h
+%{_mandir}/man2/*
 
 %files static
 %defattr(644,root,root,755)

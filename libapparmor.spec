@@ -14,6 +14,7 @@ URL:		http://forge.novell.com/modules/xfmod/project/?apparmor
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	libtool
+BuildRequires:	perl-tools-pod
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description

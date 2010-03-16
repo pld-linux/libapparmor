@@ -1,22 +1,26 @@
-%define		_ver 2.3
-%define		_svnrel 1249
+#
+# TODO:
+# - add subpackages: perl-apparmor, python-apparmor
+#
 Summary:	Library to provide key AppArmor symbols
 Summary(pl.UTF-8):	Biblioteka udostępniająca kluczowe symbole AppArmor
 Name:		libapparmor
-Version:	%{_ver}.%{_svnrel}
+Version:	2.5
 Release:	1
 Epoch:		1
 License:	LGPL
 Group:		Libraries
-Source0:	http://forge.novell.com/modules/xfcontent/private.php/apparmor/AppArmor%202.3-Beta1/%{name}-%{_ver}-%{_svnrel}.tar.gz
-# Source0-md5:	168150aaf22aa97fcdb0bb031666d8b0
-URL:		http://forge.novell.com/modules/xfmod/project/?apparmor
+Source0:	http://kernel.org/pub/linux/security/apparmor/AppArmor-%{version}/AppArmor-%{version}.tgz
+# Source0-md5:	4a747d1a1f85cb272d55b52c7e8a4a02
+URL:		http://apparmor.wiki.kernel.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	bison
 BuildRequires:	flex
 BuildRequires:	libtool
+BuildRequires:	perl-devel
 BuildRequires:	perl-tools-pod
+BuildRequires:	python-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -59,22 +63,28 @@ Static libapparmor library.
 Statyczna biblioteka libapparmor.
 
 %prep
-%setup -q -n %{name}-%{_ver}-%{_svnrel}
+%setup -q -n AppArmor-%{version}
 
 %build
+cd libraries/libapparmor
 %{__libtoolize}
 %{__aclocal}
 %{__autoconf}
 %{__automake}
-%configure
-%{__make} \
+
+%configure \
+	--with-python \
+	--with-perl \
+	--without-ruby
+
+%{__make} -j1 \
 	CC="%{__cc}" \
 	CFLAGS="%{rpmcflags}"
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__make} install \
+%{__make} -C libraries/libapparmor install \
 	DESTDIR=$RPM_BUILD_ROOT
 
 %clean

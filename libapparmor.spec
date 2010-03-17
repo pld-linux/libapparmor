@@ -6,7 +6,7 @@ Summary:	Library to provide key AppArmor symbols
 Summary(pl.UTF-8):	Biblioteka udostępniająca kluczowe symbole AppArmor
 Name:		libapparmor
 Version:	2.5
-Release:	1
+Release:	2
 Epoch:		1
 License:	LGPL
 Group:		Libraries
@@ -62,6 +62,38 @@ Static libapparmor library.
 %description static -l pl.UTF-8
 Statyczna biblioteka libapparmor.
 
+%package -n python-apparmor
+Summary:	AppArmor Python bindings
+Summary(pl.UTF-8):	Dowiązania do AppArmor dla Pythona
+Summary(pt_BR.UTF-8):	Módulos Python para acessar os recursos do AppArmor
+Group:		Development/Languages/Python
+%pyrequires_eq  python
+Requires:	%{name} = %{epoch}:%{version}-%{release}
+
+%description -n python-apparmor
+AppArmor Python bindings.
+
+%description -n python-apparmor -l pl.UTF-8
+Dowiązania do AppArmor dla Pythona.
+
+%description -n python-apparmor -l pt_BR.UTF-8
+Módulos Python para acessar os recursos do AppArmor.
+
+%package -n perl-apparmor
+Summary:	AppArmor Perl bindings
+Summary(pl.UTF-8):	Dowiązania do AppArmor dla Perla
+Summary(pt_BR.UTF-8):	Módulos Perl para acessar os recursos do AppArmor
+Group:		Development/Languages/Perl
+Requires:	%{name} = %{epoch}:%{version}-%{release}
+
+%description -n perl-apparmor
+AppArmor Perl bindings.
+
+%description -n perl-apparmor -l pl.UTF-8
+Dowiązania do AppArmor dla Perla.
+
+%description -n perl-apparmor -l pt_BR.UTF-8
+Módulos Perl para acessar os recursos do AppArmor.
 %prep
 %setup -q -n AppArmor-%{version}
 
@@ -108,3 +140,16 @@ rm -rf $RPM_BUILD_ROOT
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/lib*.a
+
+%files -n python-apparmor
+%defattr(644,root,root,755)
+%dir %{py_sitedir}/libapparmor1
+%attr(755,root,root) %{py_sitedir}/libapparmor1/*.so
+%{py_sitedir}/libapparmor1/*.py[co]
+%{py_sitedir}/*.egg-info
+
+%files -n perl-apparmor
+%defattr(644,root,root,755)
+%{perl_vendorarch}/*.pm
+%dir %{perl_vendorarch}/auto/LibAppArmor
+%attr(755,root,root) %{perl_vendorarch}/auto/LibAppArmor/*.so

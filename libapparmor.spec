@@ -1,12 +1,9 @@
-#
-# TODO:
-# - add subpackages: perl-apparmor, python-apparmor
-#
+%include	/usr/lib/rpm/macros.perl
 Summary:	Library to provide key AppArmor symbols
 Summary(pl.UTF-8):	Biblioteka udostępniająca kluczowe symbole AppArmor
 Name:		libapparmor
 Version:	2.5
-Release:	2
+Release:	3
 Epoch:		1
 License:	LGPL
 Group:		Libraries
@@ -21,6 +18,8 @@ BuildRequires:	libtool
 BuildRequires:	perl-devel
 BuildRequires:	perl-tools-pod
 BuildRequires:	python-devel
+BuildRequires:	rpm-perlprov
+BuildRequires:	rpm-pythonprov
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description

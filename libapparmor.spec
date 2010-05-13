@@ -20,6 +20,8 @@ BuildRequires:	perl-tools-pod
 BuildRequires:	python-devel
 BuildRequires:	rpm-perlprov
 BuildRequires:	rpm-pythonprov
+BuildRequires:	swig-perl
+BuildRequires:	swig-python
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description

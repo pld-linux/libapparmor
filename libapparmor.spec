@@ -2,13 +2,13 @@
 Summary:	Library to provide key AppArmor symbols
 Summary(pl.UTF-8):	Biblioteka udostępniająca kluczowe symbole AppArmor
 Name:		libapparmor
-Version:	2.5
-Release:	5
+Version:	2.6.0
+Release:	1
 Epoch:		1
 License:	LGPL
 Group:		Libraries
-Source0:	http://kernel.org/pub/linux/security/apparmor/AppArmor-%{version}/AppArmor-%{version}.tgz
-# Source0-md5:	4a747d1a1f85cb272d55b52c7e8a4a02
+Source0:	http://launchpad.net/apparmor/2.6/%{version}/+download/apparmor-%{version}.tar.gz
+# Source0-md5:	3b4fb4186ac6440a03d8f2dcf188d4b4
 URL:		http://apparmor.wiki.kernel.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -96,7 +96,7 @@ Dowiązania do AppArmor dla Perla.
 %description -n perl-apparmor -l pt_BR.UTF-8
 Módulos Perl para acessar os recursos do AppArmor.
 %prep
-%setup -q -n AppArmor-%{version}
+%setup -q -n apparmor-%{version}
 
 %build
 cd libraries/libapparmor
@@ -144,9 +144,9 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -n python-apparmor
 %defattr(644,root,root,755)
-%dir %{py_sitedir}/libapparmor1
-%attr(755,root,root) %{py_sitedir}/libapparmor1/*.so
-%{py_sitedir}/libapparmor1/*.py[co]
+%dir %{py_sitedir}/LibAppArmor
+%attr(755,root,root) %{py_sitedir}/LibAppArmor/*.so
+%{py_sitedir}/LibAppArmor/*.py[co]
 %{py_sitedir}/*.egg-info
 
 %files -n perl-apparmor

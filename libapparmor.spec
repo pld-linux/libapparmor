@@ -2,13 +2,13 @@
 Summary:	Library to provide key AppArmor symbols
 Summary(pl.UTF-8):	Biblioteka udostępniająca kluczowe symbole AppArmor
 Name:		libapparmor
-Version:	2.6.0
+Version:	2.6.1
 Release:	1
 Epoch:		1
 License:	LGPL
 Group:		Libraries
 Source0:	http://launchpad.net/apparmor/2.6/%{version}/+download/apparmor-%{version}.tar.gz
-# Source0-md5:	3b4fb4186ac6440a03d8f2dcf188d4b4
+# Source0-md5:	e2dabce946cb8258834f90f0a6c87726
 URL:		http://apparmor.wiki.kernel.org/
 BuildRequires:	autoconf
 BuildRequires:	automake

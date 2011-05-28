@@ -5,23 +5,26 @@ Name:		libapparmor
 Version:	2.6.1
 Release:	1
 Epoch:		1
-License:	LGPL
+License:	LGPL v2.1
 Group:		Libraries
 Source0:	http://launchpad.net/apparmor/2.6/%{version}/+download/apparmor-%{version}.tar.gz
 # Source0-md5:	e2dabce946cb8258834f90f0a6c87726
 URL:		http://apparmor.wiki.kernel.org/
 BuildRequires:	autoconf
-BuildRequires:	automake
+BuildRequires:	automake >= 1.4
 BuildRequires:	bison
 BuildRequires:	flex
 BuildRequires:	libtool
 BuildRequires:	perl-devel
 BuildRequires:	perl-tools-pod
 BuildRequires:	python-devel
+BuildRequires:	rpmbuild(macros) >= 1.272
 BuildRequires:	rpm-perlprov
 BuildRequires:	rpm-pythonprov
+BuildRequires:	ruby-devel
 BuildRequires:	swig-perl
 BuildRequires:	swig-python
+BuildRequires:	swig-ruby
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -63,6 +66,22 @@ Static libapparmor library.
 %description static -l pl.UTF-8
 Statyczna biblioteka libapparmor.
 
+%package -n perl-apparmor
+Summary:	AppArmor Perl bindings
+Summary(pl.UTF-8):	Dowiązania do AppArmor dla Perla
+Summary(pt_BR.UTF-8):	Módulos Perl para acessar os recursos do AppArmor
+Group:		Development/Languages/Perl
+Requires:	%{name} = %{epoch}:%{version}-%{release}
+
+%description -n perl-apparmor
+AppArmor Perl bindings.
+
+%description -n perl-apparmor -l pl.UTF-8
+Dowiązania do AppArmor dla Perla.
+
+%description -n perl-apparmor -l pt_BR.UTF-8
+Módulos Perl para acessar os recursos do AppArmor.
+
 %package -n python-apparmor
 Summary:	AppArmor Python bindings
 Summary(pl.UTF-8):	Dowiązania do AppArmor dla Pythona
@@ -80,21 +99,19 @@ Dowiązania do AppArmor dla Pythona.
 %description -n python-apparmor -l pt_BR.UTF-8
 Módulos Python para acessar os recursos do AppArmor.
 
-%package -n perl-apparmor
-Summary:	AppArmor Perl bindings
-Summary(pl.UTF-8):	Dowiązania do AppArmor dla Perla
-Summary(pt_BR.UTF-8):	Módulos Perl para acessar os recursos do AppArmor
-Group:		Development/Languages/Perl
+%package -n ruby-apparmor
+Summary:	AppArmor Ruby bindings
+Summary(pl.UTF-8):	Dowiązania do AppArmor dla języka Ruby
+Group:		Development/Languages
 Requires:	%{name} = %{epoch}:%{version}-%{release}
+%{?ruby_mod_ver_requires_eq}
 
-%description -n perl-apparmor
-AppArmor Perl bindings.
+%description -n ruby-apparmor
+AppArmor Ruby bindings.
 
-%description -n perl-apparmor -l pl.UTF-8
-Dowiązania do AppArmor dla Perla.
+%description -n ruby-apparmor -l pl.UTF-8
+Dowiązania do AppArmor dla języka Ruby.
 
-%description -n perl-apparmor -l pt_BR.UTF-8
-Módulos Perl para acessar os recursos do AppArmor.
 %prep
 %setup -q -n apparmor-%{version}
 
@@ -108,7 +125,7 @@ cd libraries/libapparmor
 %configure \
 	--with-python \
 	--with-perl \
-	--without-ruby
+	--with-ruby
 
 %{__make} -j1 \
 	CC="%{__cc}" \
@@ -120,6 +137,8 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} -C libraries/libapparmor install \
 	DESTDIR=$RPM_BUILD_ROOT
 
+%py_postclean
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -128,29 +147,41 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/lib*.so.*
+%attr(755,root,root) %{_libdir}/libapparmor.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libapparmor.so.1
+%attr(755,root,root) %{_libdir}/libimmunix.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libimmunix.so.1
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/lib*.so
-%{_libdir}/lib*.la
+%attr(755,root,root) %{_libdir}/libapparmor.so
+%attr(755,root,root) %{_libdir}/libimmunix.so
+%{_libdir}/libapparmor.la
+%{_libdir}/libimmunix.la
 %{_includedir}/aalogparse
-%{_includedir}/sys/*.h
-%{_mandir}/man2/*
+%{_includedir}/sys/apparmor.h
+%{_mandir}/man2/aa_change_hat.2*
+%{_mandir}/man2/aa_change_profile.2*
 
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/lib*.a
+%{_libdir}/libapparmor.a
+%{_libdir}/libimmunix.a
+
+%files -n perl-apparmor
+%defattr(644,root,root,755)
+%{perl_vendorarch}/LibAppArmor.pm
+%dir %{perl_vendorarch}/auto/LibAppArmor
+%{perl_vendorarch}/auto/LibAppArmor/LibAppArmor.bs
+%attr(755,root,root) %{perl_vendorarch}/auto/LibAppArmor/LibAppArmor.so
 
 %files -n python-apparmor
 %defattr(644,root,root,755)
 %dir %{py_sitedir}/LibAppArmor
-%attr(755,root,root) %{py_sitedir}/LibAppArmor/*.so
-%{py_sitedir}/LibAppArmor/*.py[co]
-%{py_sitedir}/*.egg-info
+%attr(755,root,root) %{py_sitedir}/LibAppArmor/_LibAppArmor.so
+%{py_sitedir}/LibAppArmor/__init__.py[co]
+%{py_sitedir}/LibAppArmor-*.egg-info
 
-%files -n perl-apparmor
+%files -n ruby-apparmor
 %defattr(644,root,root,755)
-%{perl_vendorarch}/*.pm
-%dir %{perl_vendorarch}/auto/LibAppArmor
-%attr(755,root,root) %{perl_vendorarch}/auto/LibAppArmor/*.so
+%attr(755,root,root) %{ruby_sitearchdir}/LibAppArmor.so

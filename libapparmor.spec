@@ -129,7 +129,7 @@ cd libraries/libapparmor
 
 %{__make} -j1 \
 	CC="%{__cc}" \
-	CFLAGS="%{rpmcflags}"
+	CFLAGS="%{rpmcflags} -fPIC"
 
 %install
 rm -rf $RPM_BUILD_ROOT

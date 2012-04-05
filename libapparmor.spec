@@ -2,13 +2,13 @@
 Summary:	Library to provide key AppArmor symbols
 Summary(pl.UTF-8):	Biblioteka udostępniająca kluczowe symbole AppArmor
 Name:		libapparmor
-Version:	2.6.1
-Release:	2
+Version:	2.7.2
+Release:	1
 Epoch:		1
 License:	LGPL v2.1
 Group:		Libraries
-Source0:	http://launchpad.net/apparmor/2.6/%{version}/+download/apparmor-%{version}.tar.gz
-# Source0-md5:	e2dabce946cb8258834f90f0a6c87726
+Source0:	http://launchpad.net/apparmor/2.7/%{version}/+download/apparmor-%{version}.tar.gz
+# Source0-md5:	2863e85bdfdf9ee35b83db6721fed1f1
 URL:		http://apparmor.wiki.kernel.org/
 BuildRequires:	autoconf
 BuildRequires:	automake >= 1.4
@@ -162,6 +162,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/sys/apparmor.h
 %{_mandir}/man2/aa_change_hat.2*
 %{_mandir}/man2/aa_change_profile.2*
+%{_mandir}/man2/aa_find_mountpoint.2*
+%{_mandir}/man2/aa_getcon.2*
 
 %files static
 %defattr(644,root,root,755)

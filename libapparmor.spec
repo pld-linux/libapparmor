@@ -2,13 +2,13 @@
 Summary:	Library to provide key AppArmor symbols
 Summary(pl.UTF-8):	Biblioteka udostępniająca kluczowe symbole AppArmor
 Name:		libapparmor
-Version:	2.8.0
+Version:	2.8.1
 Release:	1
 Epoch:		1
 License:	LGPL v2.1
 Group:		Libraries
 Source0:	http://launchpad.net/apparmor/2.8/%{version}/+download/apparmor-%{version}.tar.gz
-# Source0-md5:	eaf90c52992df3d205a753b2933595fe
+# Source0-md5:	83ae6c8190e91cf2146da8942951d305
 URL:		http://apparmor.wiki.kernel.org/
 BuildRequires:	autoconf
 BuildRequires:	automake >= 1.4
@@ -160,6 +160,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libimmunix.la
 %{_includedir}/aalogparse
 %{_includedir}/sys/apparmor.h
+%{_pkgconfigdir}/libapparmor.pc
 %{_mandir}/man2/aa_change_hat.2*
 %{_mandir}/man2/aa_change_profile.2*
 %{_mandir}/man2/aa_find_mountpoint.2*

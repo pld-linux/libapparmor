@@ -3,7 +3,7 @@ Summary:	Library to provide key AppArmor symbols
 Summary(pl.UTF-8):	Biblioteka udostępniająca kluczowe symbole AppArmor
 Name:		libapparmor
 Version:	2.8.1
-Release:	2
+Release:	3
 Epoch:		1
 License:	LGPL v2.1
 Group:		Libraries
@@ -135,6 +135,7 @@ cd libraries/libapparmor
 rm -rf $RPM_BUILD_ROOT
 
 %{__make} -C libraries/libapparmor install \
+	RUBYARCHDIR=$RPM_BUILD_ROOT%{ruby_vendorarchdir} \
 	DESTDIR=$RPM_BUILD_ROOT
 
 %py_postclean
@@ -187,4 +188,4 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -n ruby-apparmor
 %defattr(644,root,root,755)
-%attr(755,root,root) %{ruby_sitearchdir}/LibAppArmor.so
+%attr(755,root,root) %{ruby_vendorarchdir}/LibAppArmor.so

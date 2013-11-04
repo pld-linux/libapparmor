@@ -2,13 +2,13 @@
 Summary:	Library to provide key AppArmor symbols
 Summary(pl.UTF-8):	Biblioteka udostępniająca kluczowe symbole AppArmor
 Name:		libapparmor
-Version:	2.8.1
-Release:	3
+Version:	2.8.2
+Release:	1
 Epoch:		1
 License:	LGPL v2.1
 Group:		Libraries
 Source0:	http://launchpad.net/apparmor/2.8/%{version}/+download/apparmor-%{version}.tar.gz
-# Source0-md5:	83ae6c8190e91cf2146da8942951d305
+# Source0-md5:	bcc6bb56630b007d4ea5c9affe9d750d
 URL:		http://apparmor.wiki.kernel.org/
 BuildRequires:	autoconf
 BuildRequires:	automake >= 1.4
@@ -134,7 +134,7 @@ cd libraries/libapparmor
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__make} -C libraries/libapparmor install \
+%{__make} -j1 -C libraries/libapparmor install \
 	RUBYARCHDIR=$RPM_BUILD_ROOT%{ruby_vendorarchdir} \
 	DESTDIR=$RPM_BUILD_ROOT
 

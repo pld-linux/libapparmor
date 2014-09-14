@@ -178,7 +178,6 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %{perl_vendorarch}/LibAppArmor.pm
 %dir %{perl_vendorarch}/auto/LibAppArmor
-%{perl_vendorarch}/auto/LibAppArmor/LibAppArmor.bs
 %attr(755,root,root) %{perl_vendorarch}/auto/LibAppArmor/LibAppArmor.so
 
 %files -n python-apparmor

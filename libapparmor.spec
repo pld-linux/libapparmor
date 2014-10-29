@@ -2,14 +2,13 @@
 Summary:	Library to provide key AppArmor symbols
 Summary(pl.UTF-8):	Biblioteka udostępniająca kluczowe symbole AppArmor
 Name:		libapparmor
-Version:	2.8.3
-Release:	5
+Version:	2.9.0
+Release:	1
 Epoch:		1
 License:	LGPL v2.1
 Group:		Libraries
-Source0:	http://launchpad.net/apparmor/2.8/%{version}/+download/apparmor-%{version}.tar.gz
-# Source0-md5:	43586e5096606e857fef45c49553e468
-Patch0:		%{name}-python-exception.patch
+Source0:	http://launchpad.net/apparmor/2.9/%{version}/+download/apparmor-%{version}.tar.gz
+# Source0-md5:	daaeb859452f793abfdafd33f88d3e90
 URL:		http://apparmor.wiki.kernel.org/
 BuildRequires:	autoconf
 BuildRequires:	automake >= 1.4
@@ -115,7 +114,6 @@ Dowiązania do AppArmor dla języka Ruby.
 
 %prep
 %setup -q -n apparmor-%{version}
-%patch0 -p0
 
 %build
 cd libraries/libapparmor
@@ -152,15 +150,11 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libapparmor.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libapparmor.so.1
-%attr(755,root,root) %{_libdir}/libimmunix.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libimmunix.so.1
 
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libapparmor.so
-%attr(755,root,root) %{_libdir}/libimmunix.so
 %{_libdir}/libapparmor.la
-%{_libdir}/libimmunix.la
 %{_includedir}/aalogparse
 %{_includedir}/sys/apparmor.h
 %{_pkgconfigdir}/libapparmor.pc
@@ -172,7 +166,6 @@ rm -rf $RPM_BUILD_ROOT
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/libapparmor.a
-%{_libdir}/libimmunix.a
 
 %files -n perl-apparmor
 %defattr(644,root,root,755)

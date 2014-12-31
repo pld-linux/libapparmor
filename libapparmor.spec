@@ -1,3 +1,10 @@
+# Conditional build:
+%bcond_without	ruby			# build without Ruby bindings
+
+%ifarch x32
+%undefine	with_ruby
+%endif
+
 %include	/usr/lib/rpm/macros.perl
 Summary:	Library to provide key AppArmor symbols
 Summary(pl.UTF-8):	Biblioteka udostępniająca kluczowe symbole AppArmor
@@ -21,10 +28,10 @@ BuildRequires:	python-devel
 BuildRequires:	rpmbuild(macros) >= 1.272
 BuildRequires:	rpm-perlprov
 BuildRequires:	rpm-pythonprov
-BuildRequires:	ruby-devel
+%{?with_ruby:BuildRequires:	ruby-devel}
 BuildRequires:	swig-perl
 BuildRequires:	swig-python
-BuildRequires:	swig-ruby
+%{?with_ruby:BuildRequires:	swig-ruby}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -123,9 +130,9 @@ cd libraries/libapparmor
 %{__automake}
 
 %configure \
+	%{?with_ruby:--with-ruby} \
 	--with-python \
-	--with-perl \
-	--with-ruby
+	--with-perl
 
 %{__make} -j1 \
 	CC="%{__cc}" \
@@ -180,6 +187,8 @@ rm -rf $RPM_BUILD_ROOT
 %{py_sitedir}/LibAppArmor/__init__.py[co]
 %{py_sitedir}/LibAppArmor-*.egg-info
 
+%if %{with ruby}
 %files -n ruby-apparmor
 %defattr(644,root,root,755)
 %attr(755,root,root) %{ruby_vendorarchdir}/LibAppArmor.so
+%endif

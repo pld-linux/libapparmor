@@ -1,10 +1,6 @@
 # Conditional build:
 %bcond_without	ruby			# build without Ruby bindings
 
-%ifarch x32
-%undefine	with_ruby
-%endif
-
 %include	/usr/lib/rpm/macros.perl
 Summary:	Library to provide key AppArmor symbols
 Summary(pl.UTF-8):	Biblioteka udostępniająca kluczowe symbole AppArmor

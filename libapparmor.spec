@@ -6,7 +6,7 @@ Summary:	Library to provide key AppArmor symbols
 Summary(pl.UTF-8):	Biblioteka udostępniająca kluczowe symbole AppArmor
 Name:		libapparmor
 Version:	2.9.2
-Release:	1
+Release:	2
 Epoch:		1
 License:	LGPL v2.1
 Group:		Libraries
@@ -85,21 +85,22 @@ Dowiązania do AppArmor dla Perla.
 %description -n perl-apparmor -l pt_BR.UTF-8
 Módulos Perl para acessar os recursos do AppArmor.
 
-%package -n python-apparmor
+%package -n python-LibAppArmor
 Summary:	AppArmor Python bindings
 Summary(pl.UTF-8):	Dowiązania do AppArmor dla Pythona
 Summary(pt_BR.UTF-8):	Módulos Python para acessar os recursos do AppArmor
 Group:		Development/Languages/Python
 %pyrequires_eq  python
+Obsoletes:	python-apparmor
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 
-%description -n python-apparmor
+%description -n python-LibAppArmor
 AppArmor Python bindings.
 
-%description -n python-apparmor -l pl.UTF-8
+%description -n python-LibAppArmor -l pl.UTF-8
 Dowiązania do AppArmor dla Pythona.
 
-%description -n python-apparmor -l pt_BR.UTF-8
+%description -n python-LibAppArmor -l pt_BR.UTF-8
 Módulos Python para acessar os recursos do AppArmor.
 
 %package -n ruby-apparmor
@@ -176,7 +177,7 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{perl_vendorarch}/auto/LibAppArmor
 %attr(755,root,root) %{perl_vendorarch}/auto/LibAppArmor/LibAppArmor.so
 
-%files -n python-apparmor
+%files -n python-LibAppArmor
 %defattr(644,root,root,755)
 %dir %{py_sitedir}/LibAppArmor
 %attr(755,root,root) %{py_sitedir}/LibAppArmor/_LibAppArmor.so

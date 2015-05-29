@@ -6,7 +6,7 @@ Summary:	Library to provide key AppArmor symbols
 Summary(pl.UTF-8):	Biblioteka udostępniająca kluczowe symbole AppArmor
 Name:		libapparmor
 Version:	2.9.2
-Release:	2
+Release:	3
 Epoch:		1
 License:	LGPL v2.1
 Group:		Libraries
@@ -69,20 +69,21 @@ Static libapparmor library.
 %description static -l pl.UTF-8
 Statyczna biblioteka libapparmor.
 
-%package -n perl-apparmor
+%package -n perl-LibAppArmor
 Summary:	AppArmor Perl bindings
 Summary(pl.UTF-8):	Dowiązania do AppArmor dla Perla
 Summary(pt_BR.UTF-8):	Módulos Perl para acessar os recursos do AppArmor
 Group:		Development/Languages/Perl
+Obsoletes:	perl-apparmor
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 
-%description -n perl-apparmor
+%description -n perl-LibAppArmor
 AppArmor Perl bindings.
 
-%description -n perl-apparmor -l pl.UTF-8
+%description -n perl-LibAppArmor -l pl.UTF-8
 Dowiązania do AppArmor dla Perla.
 
-%description -n perl-apparmor -l pt_BR.UTF-8
+%description -n perl-LibAppArmor -l pt_BR.UTF-8
 Módulos Perl para acessar os recursos do AppArmor.
 
 %package -n python-LibAppArmor
@@ -103,17 +104,18 @@ Dowiązania do AppArmor dla Pythona.
 %description -n python-LibAppArmor -l pt_BR.UTF-8
 Módulos Python para acessar os recursos do AppArmor.
 
-%package -n ruby-apparmor
+%package -n ruby-LibAppArmor
 Summary:	AppArmor Ruby bindings
 Summary(pl.UTF-8):	Dowiązania do AppArmor dla języka Ruby
 Group:		Development/Languages
+Obsoletes:	ruby-apparmor
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 %{?ruby_mod_ver_requires_eq}
 
-%description -n ruby-apparmor
+%description -n ruby-LibAppArmor
 AppArmor Ruby bindings.
 
-%description -n ruby-apparmor -l pl.UTF-8
+%description -n ruby-LibAppArmor -l pl.UTF-8
 Dowiązania do AppArmor dla języka Ruby.
 
 %prep
@@ -171,7 +173,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %{_libdir}/libapparmor.a
 
-%files -n perl-apparmor
+%files -n perl-LibAppArmor
 %defattr(644,root,root,755)
 %{perl_vendorarch}/LibAppArmor.pm
 %dir %{perl_vendorarch}/auto/LibAppArmor
@@ -185,7 +187,7 @@ rm -rf $RPM_BUILD_ROOT
 %{py_sitedir}/LibAppArmor-*.egg-info
 
 %if %{with ruby}
-%files -n ruby-apparmor
+%files -n ruby-LibAppArmor
 %defattr(644,root,root,755)
 %attr(755,root,root) %{ruby_vendorarchdir}/LibAppArmor.so
 %endif

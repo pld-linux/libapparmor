@@ -1,5 +1,6 @@
 # Conditional build:
 %bcond_without	ruby			# build without Ruby bindings
+%bcond_with	python3			# build for Python3
 
 %include	/usr/lib/rpm/macros.perl
 Summary:	Library to provide key AppArmor symbols
@@ -20,7 +21,11 @@ BuildRequires:	flex
 BuildRequires:	libtool
 BuildRequires:	perl-devel
 BuildRequires:	perl-tools-pod
+%if %{with python3}
+BuildRequires:	python3-devel
+%else
 BuildRequires:	python-devel
+%endif
 BuildRequires:	rpmbuild(macros) >= 1.272
 BuildRequires:	rpm-perlprov
 BuildRequires:	rpm-pythonprov
@@ -104,6 +109,24 @@ Dowiązania do AppArmor dla Pythona.
 %description -n python-LibAppArmor -l pt_BR.UTF-8
 Módulos Python para acessar os recursos do AppArmor.
 
+%package -n python3-LibAppArmor
+Summary:	AppArmor Python bindings
+Summary(pl.UTF-8):	Dowiązania do AppArmor dla Pythona
+Summary(pt_BR.UTF-8):	Módulos Python para acessar os recursos do AppArmor
+Group:		Development/Languages/Python
+%pyrequires_eq  python
+Obsoletes:	python3-apparmor
+Requires:	%{name} = %{epoch}:%{version}-%{release}
+
+%description -n python3-LibAppArmor
+AppArmor Python bindings.
+
+%description -n python3-LibAppArmor -l pl.UTF-8
+Dowiązania do AppArmor dla Pythona.
+
+%description -n python3-LibAppArmor -l pt_BR.UTF-8
+Módulos Python para acessar os recursos do AppArmor.
+
 %package -n ruby-LibAppArmor
 Summary:	AppArmor Ruby bindings
 Summary(pl.UTF-8):	Dowiązania do AppArmor dla języka Ruby
@@ -129,6 +152,9 @@ cd libraries/libapparmor
 %{__automake}
 
 %configure \
+%if %{with python3}
+	PYTHON="%{__python3}" \
+%endif
 	%{?with_ruby:--with-ruby} \
 	--with-python \
 	--with-perl
@@ -179,12 +205,22 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{perl_vendorarch}/auto/LibAppArmor
 %attr(755,root,root) %{perl_vendorarch}/auto/LibAppArmor/LibAppArmor.so
 
+%if %{with python3}
+%files -n python3-LibAppArmor
+%defattr(644,root,root,755)
+%dir %{py3_sitedir}/LibAppArmor
+%attr(755,root,root) %{py3_sitedir}/LibAppArmor/_LibAppArmor.*.so
+%{py3_sitedir}/LibAppArmor/__pycache__
+%{py3_sitedir}/LibAppArmor/__init__.py
+%{py3_sitedir}/LibAppArmor-*.egg-info
+%else
 %files -n python-LibAppArmor
 %defattr(644,root,root,755)
 %dir %{py_sitedir}/LibAppArmor
 %attr(755,root,root) %{py_sitedir}/LibAppArmor/_LibAppArmor.so
 %{py_sitedir}/LibAppArmor/__init__.py[co]
 %{py_sitedir}/LibAppArmor-*.egg-info
+%endif
 
 %if %{with ruby}
 %files -n ruby-LibAppArmor

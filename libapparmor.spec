@@ -114,7 +114,7 @@ Summary:	AppArmor Python bindings
 Summary(pl.UTF-8):	Dowiązania do AppArmor dla Pythona
 Summary(pt_BR.UTF-8):	Módulos Python para acessar os recursos do AppArmor
 Group:		Development/Languages/Python
-%pyrequires_eq  python
+%pyrequires_eq  python3
 Obsoletes:	python3-apparmor
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 

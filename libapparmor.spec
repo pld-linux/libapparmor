@@ -1,26 +1,28 @@
+#
 # Conditional build:
-%bcond_without	ruby			# build without Ruby bindings
-%bcond_with	python3			# build for Python3
+%bcond_without	ruby		# build without Ruby bindings
+%bcond_with	python3		# build for Python3
 
 %include	/usr/lib/rpm/macros.perl
 Summary:	Library to provide key AppArmor symbols
 Summary(pl.UTF-8):	Biblioteka udostępniająca kluczowe symbole AppArmor
 Name:		libapparmor
-Version:	2.9.2
-Release:	3
+Version:	2.10
+Release:	1
 Epoch:		1
 License:	LGPL v2.1
 Group:		Libraries
-Source0:	http://launchpad.net/apparmor/2.9/%{version}/+download/apparmor-%{version}.tar.gz
-# Source0-md5:	3af6ef84881016bf8d9100f3f8ab036b
+Source0:	http://launchpad.net/apparmor/2.10/%{version}/+download/apparmor-%{version}.tar.gz
+# Source0-md5:	9fd9b6b3525882fdb9441d0f0a8f9162
 URL:		http://apparmor.wiki.kernel.org/
-BuildRequires:	autoconf
+BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1.4
 BuildRequires:	bison
 BuildRequires:	flex
 BuildRequires:	libtool
 BuildRequires:	perl-devel
 BuildRequires:	perl-tools-pod
+BuildRequires:	pkgconfig
 %if %{with python3}
 BuildRequires:	python3-devel
 %else
@@ -189,11 +191,17 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libapparmor.la
 %{_includedir}/aalogparse
 %{_includedir}/sys/apparmor.h
+%{_includedir}/sys/apparmor_private.h
 %{_pkgconfigdir}/libapparmor.pc
 %{_mandir}/man2/aa_change_hat.2*
 %{_mandir}/man2/aa_change_profile.2*
 %{_mandir}/man2/aa_find_mountpoint.2*
 %{_mandir}/man2/aa_getcon.2*
+%{_mandir}/man2/aa_query_label.2*
+%{_mandir}/man3/aa_features.3*
+%{_mandir}/man3/aa_kernel_interface.3*
+%{_mandir}/man3/aa_policy_cache.3*
+%{_mandir}/man3/aa_splitcon.3*
 
 %files static
 %defattr(644,root,root,755)

@@ -1,0 +1,10 @@
+--- apparmor-2.10/libraries/libapparmor/src/libapparmor.map.orig	2015-06-15 22:11:50.000000000 +0200
++++ apparmor-2.10/libraries/libapparmor/src/libapparmor.map	2015-09-20 09:05:32.801850854 +0200
+@@ -94,6 +94,7 @@
+ 		_aa_autoclose;
+ 		_aa_autofclose;
+ 		_aa_dirat_for_each;
++		_aa_asprintf;
+ 	local:
+ 		*;
+ };

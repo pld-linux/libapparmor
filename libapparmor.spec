@@ -14,6 +14,7 @@ License:	LGPL v2.1
 Group:		Libraries
 Source0:	http://launchpad.net/apparmor/2.10/%{version}/+download/apparmor-%{version}.tar.gz
 # Source0-md5:	9fd9b6b3525882fdb9441d0f0a8f9162
+Patch0:		%{name}-private.patch
 URL:		http://apparmor.wiki.kernel.org/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1.4
@@ -145,6 +146,7 @@ Dowiązania do AppArmor dla języka Ruby.
 
 %prep
 %setup -q -n apparmor-%{version}
+%patch0 -p1
 
 %build
 cd libraries/libapparmor

@@ -8,13 +8,14 @@ Summary:	Library to provide key AppArmor symbols
 Summary(pl.UTF-8):	Biblioteka udostępniająca kluczowe symbole AppArmor
 Name:		libapparmor
 Version:	2.10.1
-Release:	2
+Release:	3
 Epoch:		1
 License:	LGPL v2.1
 Group:		Libraries
 Source0:	http://launchpad.net/apparmor/2.10/%{version}/+download/apparmor-%{version}.tar.gz
 # Source0-md5:	c9d82e04d699b0530b12dec15136027d
 Patch0:		%{name}-private.patch
+Patch1:		%{name}-import.patch
 URL:		http://wiki.apparmor.net/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1.4
@@ -147,6 +148,7 @@ Dowiązania do AppArmor dla języka Ruby.
 %prep
 %setup -q -n apparmor-%{version}
 %patch0 -p1
+%patch1 -p0
 
 %build
 cd libraries/libapparmor
@@ -229,6 +231,7 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{py_sitedir}/LibAppArmor
 %attr(755,root,root) %{py_sitedir}/LibAppArmor/_LibAppArmor.so
 %{py_sitedir}/LibAppArmor/__init__.py[co]
+%{py_sitedir}/LibAppArmor/LibAppArmor.py[co]
 %{py_sitedir}/LibAppArmor-*.egg-info
 %endif
 

@@ -7,20 +7,20 @@
 Summary:	Library to provide key AppArmor symbols
 Summary(pl.UTF-8):	Biblioteka udostępniająca kluczowe symbole AppArmor
 Name:		libapparmor
-Version:	2.10.1
-Release:	3
+Version:	2.11.0
+Release:	1
 Epoch:		1
 License:	LGPL v2.1
 Group:		Libraries
-Source0:	http://launchpad.net/apparmor/2.10/%{version}/+download/apparmor-%{version}.tar.gz
-# Source0-md5:	c9d82e04d699b0530b12dec15136027d
+Source0:	http://launchpad.net/apparmor/2.11/2.11/+download/apparmor-%{version}.tar.gz
+# Source0-md5:	899fd834dc5c8ebf2d52b97e4a174af7
 Patch0:		%{name}-private.patch
-Patch1:		%{name}-import.patch
 URL:		http://wiki.apparmor.net/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1.4
 BuildRequires:	bison
 BuildRequires:	flex
+BuildRequires:	gcc >= 5:3.2
 BuildRequires:	libtool
 BuildRequires:	perl-devel
 BuildRequires:	perl-tools-pod
@@ -148,7 +148,6 @@ Dowiązania do AppArmor dla języka Ruby.
 %prep
 %setup -q -n apparmor-%{version}
 %patch0 -p1
-%patch1 -p0
 
 %build
 cd libraries/libapparmor
@@ -202,6 +201,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man2/aa_find_mountpoint.2*
 %{_mandir}/man2/aa_getcon.2*
 %{_mandir}/man2/aa_query_label.2*
+%{_mandir}/man2/aa_stack_profile.2*
 %{_mandir}/man3/aa_features.3*
 %{_mandir}/man3/aa_kernel_interface.3*
 %{_mandir}/man3/aa_policy_cache.3*

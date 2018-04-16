@@ -7,13 +7,13 @@
 Summary:	Library to provide key AppArmor symbols
 Summary(pl.UTF-8):	Biblioteka udostępniająca kluczowe symbole AppArmor
 Name:		libapparmor
-Version:	2.12
+Version:	2.13
 Release:	1
 Epoch:		1
 License:	LGPL v2.1
 Group:		Libraries
-Source0:	http://launchpad.net/apparmor/2.12/%{version}.0/+download/apparmor-%{version}.tar.gz
-# Source0-md5:	49054f58042f8e51ea92cc866575a833
+Source0:	http://launchpad.net/apparmor/2.13/%{version}.0/+download/apparmor-%{version}.tar.gz
+# Source0-md5:	c6caefb0a558492082226c467f6954cb
 Patch0:		%{name}-private.patch
 URL:		http://wiki.apparmor.net/
 BuildRequires:	autoconf >= 2.50

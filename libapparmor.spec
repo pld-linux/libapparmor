@@ -3,7 +3,6 @@
 %bcond_without	ruby		# build without Ruby bindings
 %bcond_with	python3		# build for Python3
 
-%include	/usr/lib/rpm/macros.perl
 Summary:	Library to provide key AppArmor symbols
 Summary(pl.UTF-8):	Biblioteka udostępniająca kluczowe symbole AppArmor
 Name:		libapparmor

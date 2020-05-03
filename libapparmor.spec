@@ -29,7 +29,7 @@ BuildRequires:	python3-devel
 %else
 BuildRequires:	python-devel
 %endif
-BuildRequires:	rpmbuild(macros) >= 1.272
+BuildRequires:	rpmbuild(macros) >= 1.745
 BuildRequires:	rpm-perlprov
 BuildRequires:	rpm-pythonprov
 %{?with_ruby:BuildRequires:	ruby-devel}

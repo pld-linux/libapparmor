@@ -1,18 +1,17 @@
 #
 # Conditional build:
 %bcond_without	ruby		# build without Ruby bindings
-%bcond_with	python3		# build for Python3
 
 Summary:	Library to provide key AppArmor symbols
 Summary(pl.UTF-8):	Biblioteka udostępniająca kluczowe symbole AppArmor
 Name:		libapparmor
-Version:	2.13.4
+Version:	3.0.1
 Release:	1
 Epoch:		1
 License:	LGPL v2.1
 Group:		Libraries
-Source0:	http://launchpad.net/apparmor/2.13/%{version}/+download/apparmor-%{version}.tar.gz
-# Source0-md5:	a50b793a3362551f07733be3df9c328f
+Source0:	http://launchpad.net/apparmor/3.0/%{version}/+download/apparmor-%{version}.tar.gz
+# Source0-md5:	e05eab22bdd1dfc64854856a7292cf09
 Patch0:		%{name}-private.patch
 URL:		http://wiki.apparmor.net/
 BuildRequires:	autoconf >= 2.50
@@ -24,11 +23,7 @@ BuildRequires:	libtool
 BuildRequires:	perl-devel
 BuildRequires:	perl-tools-pod
 BuildRequires:	pkgconfig
-%if %{with python3}
 BuildRequires:	python3-devel
-%else
-BuildRequires:	python-devel
-%endif
 BuildRequires:	rpmbuild(macros) >= 1.745
 BuildRequires:	rpm-perlprov
 BuildRequires:	rpm-pythonprov
@@ -156,9 +151,6 @@ cd libraries/libapparmor
 %{__automake}
 
 %configure \
-%if %{with python3}
-	PYTHON="%{__python3}" \
-%endif
 	%{?with_ruby:--with-ruby} \
 	--with-python \
 	--with-perl
@@ -216,23 +208,13 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{perl_vendorarch}/auto/LibAppArmor
 %attr(755,root,root) %{perl_vendorarch}/auto/LibAppArmor/LibAppArmor.so
 
-%if %{with python3}
 %files -n python3-LibAppArmor
 %defattr(644,root,root,755)
 %dir %{py3_sitedir}/LibAppArmor
 %attr(755,root,root) %{py3_sitedir}/LibAppArmor/_LibAppArmor.*.so
 %{py3_sitedir}/LibAppArmor/__pycache__
-%{py3_sitedir}/LibAppArmor/__init__.py
+%{py3_sitedir}/LibAppArmor/*.py
 %{py3_sitedir}/LibAppArmor-*.egg-info
-%else
-%files -n python-LibAppArmor
-%defattr(644,root,root,755)
-%dir %{py_sitedir}/LibAppArmor
-%attr(755,root,root) %{py_sitedir}/LibAppArmor/_LibAppArmor.so
-%{py_sitedir}/LibAppArmor/__init__.py[co]
-%{py_sitedir}/LibAppArmor/LibAppArmor.py[co]
-%{py_sitedir}/LibAppArmor-*.egg-info
-%endif
 
 %if %{with ruby}
 %files -n ruby-LibAppArmor

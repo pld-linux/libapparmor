@@ -89,24 +89,6 @@ Dowiązania do AppArmor dla Perla.
 %description -n perl-LibAppArmor -l pt_BR.UTF-8
 Módulos Perl para acessar os recursos do AppArmor.
 
-%package -n python-LibAppArmor
-Summary:	AppArmor Python bindings
-Summary(pl.UTF-8):	Dowiązania do AppArmor dla Pythona
-Summary(pt_BR.UTF-8):	Módulos Python para acessar os recursos do AppArmor
-Group:		Development/Languages/Python
-%pyrequires_eq  python
-Obsoletes:	python-apparmor
-Requires:	%{name} = %{epoch}:%{version}-%{release}
-
-%description -n python-LibAppArmor
-AppArmor Python bindings.
-
-%description -n python-LibAppArmor -l pl.UTF-8
-Dowiązania do AppArmor dla Pythona.
-
-%description -n python-LibAppArmor -l pt_BR.UTF-8
-Módulos Python para acessar os recursos do AppArmor.
-
 %package -n python3-LibAppArmor
 Summary:	AppArmor Python bindings
 Summary(pl.UTF-8):	Dowiązania do AppArmor dla Pythona

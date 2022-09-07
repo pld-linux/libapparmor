@@ -5,13 +5,13 @@
 Summary:	Library to provide key AppArmor symbols
 Summary(pl.UTF-8):	Biblioteka udostępniająca kluczowe symbole AppArmor
 Name:		libapparmor
-Version:	3.0.4
-Release:	2
+Version:	3.0.7
+Release:	1
 Epoch:		1
 License:	LGPL v2.1
 Group:		Libraries
 Source0:	http://launchpad.net/apparmor/3.0/%{version}/+download/apparmor-%{version}.tar.gz
-# Source0-md5:	5215a5751a90a45149c699fc3e61a6e8
+# Source0-md5:	4cab0b7abb751439dec2d0e956732f08
 Patch0:		%{name}-private.patch
 URL:		http://wiki.apparmor.net/
 BuildRequires:	autoconf >= 2.50

@@ -77,7 +77,7 @@ Summary:	AppArmor Perl bindings
 Summary(pl.UTF-8):	Dowiązania do AppArmor dla Perla
 Summary(pt_BR.UTF-8):	Módulos Perl para acessar os recursos do AppArmor
 Group:		Development/Languages/Perl
-Obsoletes:	perl-apparmor
+Obsoletes:	perl-apparmor < 1:2.9.2-3
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 
 %description -n perl-LibAppArmor
@@ -94,8 +94,7 @@ Summary:	AppArmor Python bindings
 Summary(pl.UTF-8):	Dowiązania do AppArmor dla Pythona
 Summary(pt_BR.UTF-8):	Módulos Python para acessar os recursos do AppArmor
 Group:		Development/Languages/Python
-%pyrequires_eq  python3
-Obsoletes:	python3-apparmor
+%pyrequires_eq	python3
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 
 %description -n python3-LibAppArmor
@@ -111,7 +110,7 @@ Módulos Python para acessar os recursos do AppArmor.
 Summary:	AppArmor Ruby bindings
 Summary(pl.UTF-8):	Dowiązania do AppArmor dla języka Ruby
 Group:		Development/Languages
-Obsoletes:	ruby-apparmor
+Obsoletes:	ruby-apparmor < 1:2.9.2-3
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 %{?ruby_mod_ver_requires_eq}
 

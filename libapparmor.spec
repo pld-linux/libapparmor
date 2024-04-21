@@ -13,7 +13,7 @@ Group:		Libraries
 Source0:	https://launchpad.net/apparmor/3.1/%{version}/+download/apparmor-%{version}.tar.gz
 # Source0-md5:	eee581ab969f708f1e4c6f2847c0c7a6
 Patch0:		%{name}-private.patch
-URL:		http://wiki.apparmor.net/
+URL:		https://wiki.apparmor.net/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1.4
 BuildRequires:	bison

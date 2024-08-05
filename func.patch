@@ -1,0 +1,17 @@
+--- apparmor-4.0.2/libraries/libapparmor/src/libapparmor.map~	2024-07-24 01:02:50.000000000 +0200
++++ apparmor-4.0.2/libraries/libapparmor/src/libapparmor.map	2024-08-05 15:12:47.676625569 +0200
+@@ -131,6 +131,14 @@ APPARMOR_3.1 {
+ 	*;
+ } APPARMOR_3.0;
+ 
++APPARMOR_4.0.2 {
++  global:
++	aa_split_overlay_str;
++  local:
++	*;
++} APPARMOR_3.1;
++
++
+ PRIVATE {
+ 	global:
+ 		_aa_is_blacklisted;

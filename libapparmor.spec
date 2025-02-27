@@ -13,7 +13,6 @@ Group:		Libraries
 Source0:	https://launchpad.net/apparmor/4.0/%{version}/+download/apparmor-%{version}.tar.gz
 # Source0-md5:	d581e358c470cb14f98cb838910ddf9e
 Patch0:		%{name}-private.patch
-Patch1:		func.patch
 URL:		https://wiki.apparmor.net/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1.4
@@ -124,7 +123,6 @@ Dowiązania do AppArmor dla języka Ruby.
 %prep
 %setup -q -n apparmor-%{version}
 %patch -P0 -p1
-%patch -P1 -p1
 
 %build
 cd libraries/libapparmor

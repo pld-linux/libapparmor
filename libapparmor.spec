@@ -15,6 +15,7 @@ Source0:	https://launchpad.net/apparmor/4.0/%{version}/+download/apparmor-%{vers
 Patch0:		%{name}-private.patch
 URL:		https://wiki.apparmor.net/
 BuildRequires:	autoconf >= 2.50
+BuildRequires:	autoconf-archive
 BuildRequires:	automake >= 1.4
 BuildRequires:	bison
 BuildRequires:	flex

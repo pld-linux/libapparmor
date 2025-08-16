@@ -139,7 +139,7 @@ cd libraries/libapparmor
 
 %{__make} -j1 \
 	CC="%{__cc}" \
-	CFLAGS="%{rpmcflags} -fPIC"
+	CFLAGS="%{rpmcflags} -fPIC -Wno-incompatible-pointer-types"
 
 %install
 rm -rf $RPM_BUILD_ROOT

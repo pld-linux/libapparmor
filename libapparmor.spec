@@ -52,7 +52,7 @@ SubDomain.
 Summary:	Header files for libapparmor library
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki libapparmor
 Group:		Development/Libraries
-Requires:	%{name} = %{epoch}:%{version}-%{release}
+Requires:	%{name}%{?_isa} = %{epoch}:%{version}-%{release}
 
 %description devel
 This is the package containing the header files for libapparmor
@@ -65,7 +65,7 @@ Ten pakiet zawiera pliki nagłówkowe biblioteki libapparmor.
 Summary:	Static libapparmor library
 Summary(pl.UTF-8):	Statyczna biblioteka libapparmor
 Group:		Development/Libraries
-Requires:	%{name}-devel = %{epoch}:%{version}-%{release}
+Requires:	%{name}-devel%{?_isa} = %{epoch}:%{version}-%{release}
 
 %description static
 Static libapparmor library.
@@ -79,7 +79,7 @@ Summary(pl.UTF-8):	Dowiązania do AppArmor dla Perla
 Summary(pt_BR.UTF-8):	Módulos Perl para acessar os recursos do AppArmor
 Group:		Development/Languages/Perl
 Obsoletes:	perl-apparmor < 1:2.9.2-3
-Requires:	%{name} = %{epoch}:%{version}-%{release}
+Requires:	%{name}%{?_isa} = %{epoch}:%{version}-%{release}
 
 %description -n perl-LibAppArmor
 AppArmor Perl bindings.
@@ -96,7 +96,7 @@ Summary(pl.UTF-8):	Dowiązania do AppArmor dla Pythona
 Summary(pt_BR.UTF-8):	Módulos Python para acessar os recursos do AppArmor
 Group:		Development/Languages/Python
 %pyrequires_eq	python3
-Requires:	%{name} = %{epoch}:%{version}-%{release}
+Requires:	%{name}%{?_isa} = %{epoch}:%{version}-%{release}
 
 %description -n python3-LibAppArmor
 AppArmor Python bindings.
@@ -112,7 +112,7 @@ Summary:	AppArmor Ruby bindings
 Summary(pl.UTF-8):	Dowiązania do AppArmor dla języka Ruby
 Group:		Development/Languages
 Obsoletes:	ruby-apparmor < 1:2.9.2-3
-Requires:	%{name} = %{epoch}:%{version}-%{release}
+Requires:	%{name}%{?_isa} = %{epoch}:%{version}-%{release}
 %{?ruby_mod_ver_requires_eq}
 
 %description -n ruby-LibAppArmor

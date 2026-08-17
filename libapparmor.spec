@@ -25,6 +25,7 @@ BuildRequires:	perl-devel
 BuildRequires:	perl-tools-pod
 BuildRequires:	pkgconfig
 BuildRequires:	python3-devel
+BuildRequires:	python3-setuptools
 BuildRequires:	rpmbuild(macros) >= 1.745
 BuildRequires:	rpm-perlprov
 BuildRequires:	rpm-pythonprov

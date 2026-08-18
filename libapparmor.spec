@@ -5,13 +5,13 @@
 Summary:	Library to provide key AppArmor symbols
 Summary(pl.UTF-8):	Biblioteka udostępniająca kluczowe symbole AppArmor
 Name:		libapparmor
-Version:	4.1.0
-Release:	3
+Version:	4.1.8
+Release:	1
 Epoch:		1
 License:	LGPL v2.1
 Group:		Libraries
-Source0:	https://launchpad.net/apparmor/4.1/%{version}/+download/apparmor-%{version}.tar.gz
-# Source0-md5:	a7b85f6de1fc72d2a73da80722c5538e
+Source0:	https://gitlab.com/apparmor/apparmor/-/archive/v%{version}/apparmor-v%{version}.tar.gz
+# Source0-md5:	f2bba43c1631b7a3db6bd106d5a6fb33
 Patch0:		%{name}-private.patch
 URL:		https://wiki.apparmor.net/
 BuildRequires:	autoconf >= 2.50
@@ -123,7 +123,7 @@ AppArmor Ruby bindings.
 Dowiązania do AppArmor dla języka Ruby.
 
 %prep
-%setup -q -n apparmor-%{version}
+%setup -q -n apparmor-v%{version}
 %patch -P0 -p1
 
 %build
@@ -193,10 +193,9 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -n python3-LibAppArmor
 %defattr(644,root,root,755)
-%dir %{py3_sitedir}/LibAppArmor
-%attr(755,root,root) %{py3_sitedir}/LibAppArmor/_LibAppArmor.*.so
-%{py3_sitedir}/LibAppArmor/__pycache__
-%{py3_sitedir}/LibAppArmor/*.py
+%attr(755,root,root) %{py3_sitedir}/_LibAppArmor.*.so
+%{py3_sitedir}/LibAppArmor.py
+%{py3_sitedir}/__pycache__/LibAppArmor.cpython-*.py[co]
 %{py3_sitedir}/LibAppArmor-*.egg-info
 
 %if %{with ruby}
